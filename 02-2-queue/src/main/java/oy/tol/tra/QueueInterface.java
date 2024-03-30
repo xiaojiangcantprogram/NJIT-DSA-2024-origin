@@ -13,7 +13,7 @@ public interface QueueInterface<E> {
     @return The number of elements the queue can currently hold.
     */
    public int capacity();
-   
+
    /**
     * Add an element to the queue.
     * @param element The element to add, must not be null.
