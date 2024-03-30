@@ -201,9 +201,9 @@ public class LinkedListImplementation<E> implements LinkedListInterface<E> {
       size = 0;
    }
 
-  // NOTE! You do not need to pay attention to this method.
-  // You do not need to do anything here, but do not delete it.
-  @Override
+   // NOTE! You do not need to pay attention to this method.
+   // You do not need to do anything here, but do not delete it.
+   @Override
    public void reverse() {
       if (null == head || null == head.next) {
          return;
@@ -244,5 +244,5 @@ public class LinkedListImplementation<E> implements LinkedListInterface<E> {
       builder.append("]");
       return builder.toString();
    }
-   
+
 }
