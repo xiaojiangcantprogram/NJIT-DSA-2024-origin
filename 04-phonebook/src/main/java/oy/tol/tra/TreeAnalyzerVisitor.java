@@ -24,7 +24,7 @@ class TreeAnalyzerVisitor<K extends Comparable<K>, V> implements Visitor<K, V> {
 			if (node.right != null) {
 				currentHeight++;
 				node.right.accept(this);
-			}	
+			}
 		}
 		currentHeight--;
 	}
