@@ -11,13 +11,19 @@ public class KeyValueBSearchTree<K extends Comparable<K>, V> implements Dictiona
 
     @Override
     public Type getType() {
-        return Type.NONE;
+        return Type.BST;
     }
 
     @Override
     public int size() {
-        // TODO: Implement this
-        return 0;
+        return size(root);
+    }
+
+    private int size(TreeNode<K, V> node) {
+        if (node == null) {
+            return 0;
+        }
+        return 1 + size(node.left) + size(node.right);
     }
 
     /**
@@ -48,21 +54,49 @@ public class KeyValueBSearchTree<K extends Comparable<K>, V> implements Dictiona
 
     @Override
     public boolean add(K key, V value) throws IllegalArgumentException, OutOfMemoryError {
-        // TODO: Implement this
-        // Remember null check.
-        // If root is null, should go there.
-        
-            // update the root node. But it may have children
-            // so do not just replace it with this new node but set
-            // the keys and values for the already existing root.
-            
-        return false;
+        if (key == null) {
+            throw new IllegalArgumentException("Key cannot be null");
+        }
+        root = addNode(root, key, value);
+        if (root != null) {
+            count++;
+        }
+        return true;
+    }
+
+    private TreeNode<K, V> addNode(TreeNode<K, V> node, K key, V value) {
+        if (node == null) {
+            return new TreeNode<>(key, value);
+        }
+        int comparison = key.compareTo(node.keyValue.getKey());
+        if (comparison < 0) {
+            node.left = addNode(node.left, key, value);
+        } else if (comparison > 0) {
+            node.right = addNode(node.right, key, value);
+        } else {
+            node.keyValue.setValue(value);
+            node.keyValue.getValue();
+        }
+        return node;
     }
 
     @Override
     public V find(K key) throws IllegalArgumentException {
-        // TODO: Implement this. //Think about this
-        return (null);
+        if (key == null) {
+            throw new IllegalArgumentException("Key cannot be null");
+        }
+        TreeNode<K, V> current = root;
+        while (current != null) {
+            int comparison = key.compareTo(current.keyValue.getKey());
+            if (comparison == 0) {
+                return current.keyValue.getValue();
+            } else if (comparison < 0) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+        return null;
     }
 
     @Override
