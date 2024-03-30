@@ -3,7 +3,7 @@ package oy.tol.tra;
 /**
  * Class Pair defines a key-value -pair of objects where each key has an
  * associated value.
- * 
+ *
  * Keys must implement the Comparable interface. Equality is determined by
  * comparing keys.
  */
