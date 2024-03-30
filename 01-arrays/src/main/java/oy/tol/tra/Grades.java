@@ -54,10 +54,12 @@ public class Grades {
       */
       int i = grades.length-1;
       while (i > 0) {
-         if (grades[i] < grades[i-1]) {
-            int tmp = grades[i];
-            grades[i] = grades[i-1];
-            grades[i-1] = tmp;
+         for(int j = grades.length-1; j > 0; j--) {
+            if (grades[j] < grades[j - 1]) {
+               int tmp = grades[j];
+               grades[j] = grades[j - 1];
+               grades[j - 1] = tmp;
+            }
          }
          i--;
       }
