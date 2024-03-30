@@ -18,14 +18,14 @@ class DescendingPersonComparator implements Comparator<Person> {
 }
 
 public class ComparatorTester {
-	
+
 	public static void main(String [] args) {
 
-		Person [] array = { new Person("Antti", "Juustila"), 
-		new Person("Seppo", "Zippaaja"),
-		new Person("Atte", "Aurinkoinen"),
-		new Person("Simo", "Hiltunen"),
-		new Person("Heikki", "Iivari")};
+		Person [] array = { new Person("Antti", "Juustila"),
+				new Person("Seppo", "Zippaaja"),
+				new Person("Atte", "Aurinkoinen"),
+				new Person("Simo", "Hiltunen"),
+				new Person("Heikki", "Iivari")};
 
 		Algorithms.sortWithComparator(array, new AscendingPersonComparator());
 		System.out.println(Arrays.toString(array));
