@@ -24,7 +24,7 @@ public class StackImplementation<E> implements StackInterface<E> {
     */
    public StackImplementation() throws StackAllocationException {
       // TODO: call the constructor with size parameter with default size of 10.
-      
+      this(DEFAULT_STACK_SIZE);
    }
 
    /** TODO: Implement so that
@@ -35,49 +35,81 @@ public class StackImplementation<E> implements StackInterface<E> {
     * @throws StackAllocationException If cannot allocate room for the internal array.
     */
    public StackImplementation(int capacity) throws StackAllocationException {
-      
+      if (capacity < 2) {
+         throw new StackAllocationException("Capacity must be at least 2");
+      }
+      try {
+         itemArray = new Object[capacity];
+         this.capacity = capacity;
+      } catch (Exception e) {
+         throw new StackAllocationException("Failed to allocate room for the internal array");
+      }
    }
 
    @Override
    public int capacity() {
       // TODO: Implement this
-      
+      return capacity;
    }
 
    @Override
    public void push(E element) throws StackAllocationException, NullPointerException {
       // TODO: Implement this
-               
+      if (element == null) {
+         throw new NullPointerException("Element cannot be null");
+      }
+      if (currentIndex == capacity - 1) {
+
+         int newCapacity = capacity * 2;
+         Object[] newArray = new Object[newCapacity];
+         System.arraycopy(itemArray, 0, newArray, 0, capacity);
+         itemArray = newArray;
+         capacity = newCapacity;
+      }
+      currentIndex++;
+      itemArray[currentIndex] = element;
    }
 
    @SuppressWarnings("unchecked")
    @Override
    public E pop() throws StackIsEmptyException {
-      
+      if (isEmpty()) {
+         throw new StackIsEmptyException("Cannot pop from an empty stack");
+      }
+      E popItem = (E) itemArray[currentIndex];
+      itemArray[currentIndex] = null;
+      currentIndex--;
+      return popItem;
    }
 
    @SuppressWarnings("unchecked")
    @Override
    public E peek() throws StackIsEmptyException {
-      
+      if (isEmpty()) {
+         throw new StackIsEmptyException("Cannot peek from an empty stack");
+      }
+      return (E) itemArray[currentIndex];
    }
 
    @Override
    public int size() {
       // TODO: Implement this
-      
+      return currentIndex + 1;
    }
 
    @Override
    public void clear() {
       // TODO: Implement this
-      
-   }
+      for (int i = 0; i <= currentIndex; i++) {
+         itemArray[i] = null;
+      }
+      currentIndex = -1;
+      }
 
    @Override
    public boolean isEmpty() {
       // TODO: Implement this
-      
+      return currentIndex == -1;
    }
 
    @Override
