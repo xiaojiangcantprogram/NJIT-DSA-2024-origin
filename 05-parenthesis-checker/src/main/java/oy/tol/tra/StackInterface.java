@@ -2,22 +2,21 @@ package oy.tol.tra;
 
 /**
  * An interface to stack class holding elements of type E.
- * 
+ *
  */
 public interface StackInterface<E> {
-
    /**
     * For querying the capacity of the stack.
     @return The number of elements the stack can currently hold.
     */
    public int capacity();
-   
+
    /**
     * Push an element to the stack.
     * <p>
     * If the internal array does not have enough room for the element, the implementation MUST
     * first create a larger array, copy the elements from the old array to the new array,
-    * and then replace the old array with the new array. The capacity of the array must 
+    * and then replace the old array with the new array. The capacity of the array must
     * be updated too.
     * @param element The element to push, must not be null, if it is, throw NullPointerException.
     * @throws StackAllocationException if no additional room can be allocated for the stack
@@ -49,7 +48,7 @@ public interface StackInterface<E> {
     *  Use to check if the stack is empty.
     * @return Returns true if the stack is empty, false otherwise.
     */
-    public boolean isEmpty();
+   public boolean isEmpty();
 
    /**
     * Clears the stack so that it does not contain any elements.
