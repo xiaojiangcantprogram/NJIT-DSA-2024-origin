@@ -2,14 +2,14 @@ package oy.tol.tra;
 
 /**
  * Exception class to be used in implementing ParenthesisChecker.checkParentheses().
- * 
+ *
  * When your code sees that the text to analyse has too many closing parentheses,
  * throw this exeption like this:
- * 
+ *
  * <code>
  * throw new ParenthesesException("Invalid parenthesis in file", ParenthesesException.TOO_MANY_CLOSING_PARENTHESES) ;
  * </code>
-*/
+ */
 class ParenthesesException extends Exception {
    private static final long serialVersionUID = 1426141947123353829L;
    public static final int TOO_MANY_CLOSING_PARENTHESES = -1;
